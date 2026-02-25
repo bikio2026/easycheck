@@ -13,8 +13,8 @@ const io = new Server(server, { cors: { origin: '*' } });
 app.use(cors());
 app.use(express.json());
 
-const PORT = 3081;
-const CLIENT_URL = 'http://localhost:3080';
+const PORT = process.env.PORT || 3081;
+const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:3080';
 
 // ============ RESTAURANT API ============
 
@@ -266,6 +266,24 @@ io.on('connection', (socket) => {
     socket.join(sessionId);
   });
 });
+
+// ============ STATIC FILES (production) ============
+
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
+import { existsSync } from 'fs';
+
+const __dirname2 = dirname(fileURLToPath(import.meta.url));
+const clientDist = join(__dirname2, '..', 'client', 'dist');
+
+if (existsSync(clientDist)) {
+  app.use(express.static(clientDist));
+  app.get('*', (req, res) => {
+    if (!req.path.startsWith('/api') && !req.path.startsWith('/socket.io')) {
+      res.sendFile(join(clientDist, 'index.html'));
+    }
+  });
+}
 
 // ============ START ============
 

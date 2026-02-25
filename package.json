@@ -1,0 +1,12 @@
+{
+  "name": "easycheck",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "install:all": "cd client && npm install && cd ../server && npm install",
+    "build": "cd client && npm run build",
+    "seed": "cd server && node seed.js",
+    "start": "cd server && node index.js",
+    "dev": "cd server && node --watch index.js & cd client && npx vite --port 3080"
+  }
+}
