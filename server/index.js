@@ -287,6 +287,6 @@ if (existsSync(clientDist)) {
 
 // ============ START ============
 
-server.listen(PORT, () => {
-  console.log(`EasyCheck API running on http://localhost:${PORT}`);
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`EasyCheck API running on http://0.0.0.0:${PORT}`);
 });
