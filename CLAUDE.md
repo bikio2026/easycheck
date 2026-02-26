@@ -47,3 +47,42 @@ restaurants → categories → menu_items
 restaurants → tables → sessions → diners
 sessions → orders (linked to diners + menu_items)
 sessions → payments → payment_items (linked to orders)
+
+## Deploy
+- **URL**: https://easycheck-production-ff29.up.railway.app
+- **Hosting**: Railway (auto-deploy desde `main`)
+- **Build**: Nixpacks (ver `nixpacks.toml`)
+- Cada merge a `main` redepliegue automaticamente
+
+## Colaboracion
+
+### Setup local
+```bash
+git clone https://github.com/bikio2026/easycheck.git
+cd easycheck
+cd client && npm install && cd ../server && npm install
+cd server && npm run seed
+```
+
+### Flujo de trabajo (branches)
+`main` esta protegido — no se puede pushear directo. Todo cambio va por PR:
+```bash
+git checkout main && git pull
+git checkout -b feature/mi-cambio    # crear branch
+# ... trabajar ...
+git add <archivos> && git commit -m "descripcion"
+git push -u origin feature/mi-cambio
+# Crear Pull Request en GitHub → pedir review → merge
+```
+
+### Reglas
+- **Nunca pushear directo a `main`** — siempre PR
+- PRs requieren **1 approval** antes de merge
+- Nombrar branches: `feature/xxx`, `fix/xxx`, `refactor/xxx`
+- Commits en espanol, concisos
+- Antes de crear PR, verificar que `npm run build` pasa en `client/`
+
+### Puertos locales
+- Frontend: 3080
+- API: 3081
+- No cambiar estos puertos (estan registrados en PORTS.md global)
