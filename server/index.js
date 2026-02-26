@@ -278,7 +278,7 @@ const clientDist = join(__dirname2, '..', 'client', 'dist');
 
 if (existsSync(clientDist)) {
   app.use(express.static(clientDist));
-  app.get('*', (req, res) => {
+  app.get('{*path}', (req, res) => {
     if (!req.path.startsWith('/api') && !req.path.startsWith('/socket.io')) {
       res.sendFile(join(clientDist, 'index.html'));
     }
