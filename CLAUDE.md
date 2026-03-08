@@ -49,7 +49,7 @@ sessions → orders (linked to diners + menu_items)
 sessions → payments → payment_items (linked to orders)
 
 ## Deploy
-- **URL**: (pendiente — configurar en Render)
+- **URL**: https://easycheck-w61z.onrender.com
 - **Hosting**: Render (free tier, auto-deploy desde `main`)
 - **Config**: `render.yaml` (Render Blueprint)
 - Cada merge a `main` redepliegue automaticamente
