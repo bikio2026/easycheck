@@ -49,10 +49,11 @@ sessions → orders (linked to diners + menu_items)
 sessions → payments → payment_items (linked to orders)
 
 ## Deploy
-- **URL**: https://easycheck-production-ff29.up.railway.app
-- **Hosting**: Railway (auto-deploy desde `main`)
-- **Build**: Nixpacks (ver `nixpacks.toml`)
+- **URL**: (pendiente — configurar en Render)
+- **Hosting**: Render (free tier, auto-deploy desde `main`)
+- **Config**: `render.yaml` (Render Blueprint)
 - Cada merge a `main` redepliegue automaticamente
+- Free tier: se duerme tras 15 min sin uso (~30s cold start)
 
 ## Colaboracion
 

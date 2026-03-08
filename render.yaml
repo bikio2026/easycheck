@@ -1,0 +1,10 @@
+services:
+  - type: web
+    runtime: node
+    name: easycheck
+    plan: free
+    buildCommand: cd client && npm ci && npm run build && cd ../server && npm ci
+    startCommand: cd server && node seed.js; node index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
